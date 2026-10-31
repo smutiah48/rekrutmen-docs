@@ -9,17 +9,12 @@ const assert = require('node:assert/strict');
     const page = await browser.newPage({viewport}), errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(base);
-    if (viewport.width < 760) await page.getByRole('button', {name: 'Menu'}).click();
-    await page.locator('#nav-list a[data-doc="demo"]').click();
-    await page.getByRole('heading', {name: 'Demo alur rekrutmen', level: 1}).waitFor();
-    assert.equal(new URL(page.url()).searchParams.get('doc'), 'demo');
-    await page.reload();
-    await page.getByRole('heading', {name: 'Demo alur rekrutmen', level: 1}).waitFor();
+    await page.getByRole('heading', {name: 'Demo alur rekrutmen', level: 2}).waitFor();
     const cards = page.locator('.demo-card'), images = cards.locator('img');
     assert.equal(await cards.count(), 23);
-    assert.equal(await cards.locator('figcaption h3').count(), 23);
+    assert.equal(await cards.locator('figcaption h4').count(), 23);
     assert.equal(await cards.locator('figcaption p').count(), 23);
-    assert.equal(await page.locator('#toc a').count(), 5);
+    assert.equal(await page.locator('#demo > h3').count(), 5);
     const results = await images.evaluateAll(async elements => {
       for (const image of elements) image.loading = 'eager';
       return Promise.all(elements.map(async image => {
@@ -30,9 +25,8 @@ const assert = require('node:assert/strict');
     assert.ok(results.every(result => result.loaded && result.alt), 'all screenshots load and have alternative text');
     assert.deepEqual(results.map(result => Number(new URL(result.src).pathname.split('/').pop().slice(0, 2))), Array.from({length: 23}, (_, i) => i + 1));
     assert.equal(await page.locator('html').evaluate(element => element.scrollWidth <= element.clientWidth), true);
-    await page.goto(`${base}?doc=DESIGN.md`); await page.locator('#article h1').waitFor();
-    await page.goBack(); await page.getByRole('heading', {name: 'Demo alur rekrutmen', level: 1}).waitFor();
+    assert.equal(await page.getByRole('link', {name: 'Lihat proyek ini'}).getAttribute('href'), 'https://karier.ui.ac.id/');
     assert.deepEqual(errors, []); await page.close();
   }
-  await browser.close(); console.log('PASS: 23 ordered screenshots, captions, navigation, history and mobile layout');
+  await browser.close(); console.log('PASS: 23 ordered screenshots, captions, CTA and mobile layout');
 })().catch(error => { console.error(error); process.exit(1); });

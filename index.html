@@ -1,24 +1,36 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
-  <title>Dokumentasi Portal Rekrutmen</title>
-  <link rel="stylesheet" href="assets/site.css">
-  <script src="assets/marked.min.js" defer></script>
-  <script src="assets/purify.min.js" defer></script>
-  <script src="assets/diagrams.js" defer></script>
-  <script src="assets/demo.js" defer></script>
-  <script src="assets/site.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Portal Rekrutmen UI | Dokumentasi Pengembangan 2026</title>
+<meta name="description" content="Dokumentasi perancangan dan pengembangan awal Portal Rekrutmen UI 2026, mencakup layanan pelamar, tahapan seleksi, dan pengelolaan rekrutmen.">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/purify.min.js" defer></script><script src="assets/diagrams.js" defer></script><script src="assets/demo.js" defer></script><script src="assets/site.js" defer></script>
 </head>
 <body id="top">
-  <a class="skip-link" href="#content">Lewati ke isi</a>
-  <header class="header"><div class="header-inner"><a class="brand" href="?doc=README.md"><span class="brand-mark" aria-hidden="true">R</span><span>Portal Rekrutmen<small>Dokumentasi proyek</small></span></a><button id="menu-button" class="menu-button" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><span class="header-label">DOKUMENTASI PUBLIK</span></div></header>
-  <div class="layout">
-    <nav id="navigation" class="sidebar" aria-label="Navigasi dokumentasi"><p class="nav-caption">JELAJAHI DOKUMENTASI</p><div id="nav-list"></div></nav>
-    <main id="content" tabindex="-1"><div class="eyebrow">PUSAT PENGETAHUAN <span aria-hidden="true">/</span> <span id="current-group">PENGANTAR</span></div><div class="content-grid"><div class="article-column"><div id="status" class="status" role="status" aria-live="polite">Memuat dokumentasi…</div><article id="article" class="markdown"></article><button id="retry" type="button" hidden>Coba lagi</button><div class="article-footer"><button id="copy-link" type="button">Salin tautan halaman</button><a href="#top">Kembali ke atas ↑</a></div></div><aside class="toc" aria-label="Daftar isi halaman"><p>DI HALAMAN INI</p><nav id="toc" aria-label="Daftar isi"></nav></aside></div><footer>Dokumentasi publik · Portal Rekrutmen</footer></main>
-  </div>
-</body>
-</html>
+<a class="skip-link" href="#content">Lewati ke isi</a>
+<header><div class="wrap"><a class="brand" href="#top">Dokumentasi Proyek</a><nav aria-label="Navigasi portofolio"><a href="#cerita">Tentang Proyek</a><a href="#fitur">Fitur Utama</a><a href="#alur">Alur Rekrutmen</a><a href="#demo">Demo Visual</a></nav></div></header>
+<main id="content" tabindex="-1">
+<section class="hero"><div class="wrap"><span class="eyebrow">Universitas Indonesia · Rekrutmen PTT 2026</span><h1>Portal Rekrutmen UI</h1><p class="lead">Satu alur rekrutmen yang menghubungkan pencarian formasi, pendaftaran, pemantauan seleksi, dan tindak lanjut pelamar.</p><p class="byline">Dokumentasi pengembangan · Periode 2026</p><div class="actions"><a class="button" href="https://karier.ui.ac.id/" target="_blank" rel="noopener noreferrer">Kunjungi Portal ↗</a><a class="button secondary" href="#demo">Lihat Demo Visual ↓</a></div></div></section>
+<section id="cerita" class="section wrap"><div class="intro"><h2>Perancangan Layanan Rekrutmen Terintegrasi</h2><p>Portal Rekrutmen UI dikembangkan untuk menyatukan kebutuhan pelamar dan pengelola dalam satu layanan, dari informasi formasi hingga penyampaian hasil seleksi.</p><p>Pengembangan periode 2026 mencakup rekrutmen Pegawai Tidak Tetap Tenaga Kependidikan untuk formasi fungsional pelaksana, tenaga kesehatan, dan laboran.</p><p>Pendekatan pengembangannya menekankan konsistensi antartahap, informasi sesuai konteks pelamar, serta dukungan administrasi dan pelaporan bagi pengelola.</p></div>
+<div class="grid"><article class="card"><h3>Alur yang Terhubung</h3><p>Informasi formasi, pendaftaran, pengumuman, dan status seleksi tersaji dalam satu rangkaian layanan.</p></article><article class="card"><h3>Interaksi Kontekstual</h3><p>Formulir, validasi, dan konfirmasi disesuaikan dengan kebutuhan pada setiap tahapan.</p></article><article class="card"><h3>Tindak Lanjut yang Jelas</h3><p>Informasi hasil seleksi dan langkah berikutnya tersedia sesuai perkembangan proses rekrutmen.</p></article></div></section>
+<section id="perjalanan" class="section wrap"><h2>Dokumentasi Perkembangan Portal</h2><p class="intro">Dokumentasi antarmuka memperlihatkan perkembangan portal sejak masa pendaftaran hingga setelah penutupan.</p><div class="stats"><div class="stat"><strong>1.334</strong><span>Kunjungan tercatat · dokumentasi awal</span></div><div class="stat"><strong>241.312</strong><span>Kunjungan tercatat · setelah penutupan</span></div></div>
+<div class="comparison"><figure><a href="assets/images/01-beranda-pendaftaran-dibuka.jpg"><img src="assets/images/01-beranda-pendaftaran-dibuka.jpg" alt="Tampilan beranda saat pendaftaran dibuka" loading="lazy"></a><figcaption>Pendaftaran Dibuka</figcaption></figure><figure><a href="assets/images/21-beranda-pendaftaran-ditutup.png"><img src="assets/images/21-beranda-pendaftaran-ditutup.png" alt="Tampilan beranda setelah pendaftaran ditutup" loading="lazy"></a><figcaption>Pendaftaran Ditutup</figcaption></figure></div><p class="note">Data kunjungan mengacu pada penghitung dalam tangkapan layar, bukan jumlah pelamar atau pengguna unik.</p></section>
+<section id="fitur" class="section wrap"><h2>Fitur Utama</h2><p class="intro">Fitur pendukung proses rekrutmen bagi pelamar dan pengelola.</p><div class="grid">
+<article class="card"><h3>Pencarian Formasi</h3><ul class="feature-list"><li>Pilihan jalur rekrutmen.</li><li>Daftar formasi dan kebutuhan tenaga kerja.</li><li>Pencarian dan filter formasi.</li><li>Rincian kualifikasi dan persyaratan.</li></ul></article>
+<article class="card"><h3>Pendaftaran Online</h3><ul class="feature-list"><li>Formulir sesuai formasi yang dipilih.</li><li>Data pendidikan dan pengalaman kerja.</li><li>Validasi kelengkapan dan persetujuan ketentuan.</li><li>Penyimpanan draf dan pencegahan duplikasi.</li><li>Konfirmasi dan nomor lamaran melalui email.</li></ul></article>
+<article class="card"><h3>Status Seleksi</h3><ul class="feature-list"><li>Pelacakan status dan riwayat seleksi.</li><li>Hasil seleksi administrasi, tes, dan wawancara.</li><li>Informasi hasil akhir dan tindak lanjut.</li></ul></article>
+<article class="card"><h3>Informasi Rekrutmen</h3><ul class="feature-list"><li>Pengumuman dan dokumen pendukung.</li><li>Panduan dan pertanyaan umum.</li><li>Pemberitahuan tahapan rekrutmen.</li><li>Informasi periode pendaftaran.</li></ul></article>
+<article class="card"><h3>Administrasi Seleksi</h3><ul class="feature-list"><li>Pengelolaan lamaran dan tahapan seleksi.</li><li>Peninjauan dan penyaringan kandidat.</li><li>Pengelolaan wawancara dan rekap hasil.</li><li>Pelaporan dan dokumen administrasi.</li></ul></article>
+<article class="card"><h3>Pengalaman Pengguna</h3><ul class="feature-list"><li>Tampilan responsif di komputer dan ponsel.</li><li>Informasi dan instruksi yang jelas.</li><li>Konfirmasi dan pesan validasi yang informatif.</li><li>Publikasi hasil berdasarkan pengumuman resmi.</li></ul></article></div><p class="note">Cakupan fitur merujuk pengembangan tahun 2026. Akses layanan mengikuti ketentuan rekrutmen.</p></section>
+<section id="alur" class="section wrap"><h2>Alur Rekrutmen</h2><p>Tahapan utama dari pemilihan formasi hingga pengumuman hasil.</p><pre><code class="language-mermaid">flowchart TD
+A[Pilih formasi] --> B[Periksa persyaratan]
+B --> C[Isi dan kirim lamaran]
+C --> D[Terima konfirmasi]
+D --> E[Pantau status seleksi]
+E --> F[Lihat hasil seleksi]</code></pre></section>
+<section id="demo" class="section wrap" aria-label="Demo visual portal"><noscript><h2>Demo Visual Rekrutmen</h2><p>Aktifkan JavaScript untuk melihat dokumentasi visual proses rekrutmen.</p></noscript></section>
+<section id="kontribusi" class="section wrap"><div class="credit"><h2>Pendekatan dan Keberlanjutan Pengembangan</h2><p>Pengembangan awal portal berfokus pada penyelarasan kebutuhan rekrutmen, alur layanan pelamar, dan proses administrasi seleksi dalam satu sistem yang terhubung.</p><p>Rancangan ini menempatkan konsistensi antartahap, kejelasan informasi, dan kemudahan tindak lanjut sebagai prinsip utama. Dokumentasi periode 2026 menjadi dasar referensi untuk pemeliharaan, evaluasi, serta pengembangan lebih lanjut.</p><p>Setiap penyempurnaan berikutnya dapat dicatat sesuai ruang lingkup dan kontribusi pengembang yang terlibat.</p></div></section>
+</main><footer><div class="wrap"><span>Dokumentasi Pengembangan 2026 · Pengembang awal: <strong>Siti Mutiah</strong></span><a href="#top">Kembali ke atas ↑</a></div></footer>
+</body></html>

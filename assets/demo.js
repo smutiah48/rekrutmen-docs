@@ -37,18 +37,18 @@ const demoGroups = [
 ];
 
 function renderDemo(article) {
-  const title = document.createElement('h1'); title.textContent = 'Demo alur rekrutmen';
+  const title = document.createElement('h2'); title.textContent = 'Demo alur rekrutmen';
   const intro = document.createElement('p'); intro.className = 'demo-intro';
   intro.textContent = 'Jelajahi tampilan portal dari pemilihan formasi hingga pelacakan hasil. Gambar merekam periode sebelumnya; identitas pada contoh status telah disamarkan dan informasi yang terlihat bukan pengumuman terkini.';
   article.append(title, intro);
   let number = 0;
   for (const [group, items] of demoGroups) {
-    const heading = document.createElement('h2'); heading.textContent = group; article.append(heading);
+    const heading = document.createElement('h3'); heading.textContent = group; article.append(heading);
     for (const [file, name, description] of items) {
       const figure = document.createElement('figure'); figure.className = 'demo-card';
       const caption = document.createElement('figcaption');
       const label = document.createElement('span'); label.className = 'demo-number'; label.textContent = `LAYAR ${String(++number).padStart(2, '0')}`;
-      const cardTitle = document.createElement('h3'); cardTitle.textContent = name;
+      const cardTitle = document.createElement('h4'); cardTitle.textContent = name;
       const text = document.createElement('p'); text.textContent = description;
       caption.append(label, cardTitle, text);
       const link = document.createElement('a'); link.className = 'demo-image-link';

@@ -23,13 +23,21 @@ class PublicDocumentationReview(unittest.TestCase):
         navigation = (ROOT / 'assets/site.js').read_text(encoding='utf-8')
         docs = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*.md') if '.git' not in p.parts}
         allowed = set(re.findall(r"\['([^']+\.md)','[^']+'\]", navigation))
-        self.assertEqual(docs, allowed)
+        self.assertEqual(docs, {'README.md'})
+        self.assertFalse(allowed)
+        self.assertFalse((ROOT / 'docs').exists())
+        html = (ROOT / 'index.html').read_text(encoding='utf-8')
+        self.assertNotIn('?doc=', html)
+        for link in re.findall(r'(?:src|href)="([^"]+)"', html):
+            url = urlsplit(link)
+            if not url.scheme and url.path:
+                self.assertTrue((ROOT / url.path).is_file(), link)
 
     def test_markdown_links_and_sensitive_patterns(self):
         patterns = [r'AIza[0-9A-Za-z_-]{35}', r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
                     r'\b(?:ghp|gho|ghs|github_pat)_[A-Za-z0-9_]{20,}',
                     r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b',
-                    r'https?://[^\s)]+', r'(?<!\d)(?:\+62|08)\d[\d -]{8,}\d(?!\d)']
+                    r'(?<!\d)(?:\+62|08)\d[\d -]{8,}\d(?!\d)']
         for doc in ROOT.rglob('*.md'):
             if '.git' in doc.parts:
                 continue
@@ -37,7 +45,11 @@ class PublicDocumentationReview(unittest.TestCase):
             for pattern in patterns:
                 self.assertIsNone(re.search(pattern, text, re.I), f'{doc.name}: sensitive pattern')
             for link in re.findall(r'\]\(([^)]+)\)', text):
-                path = urlsplit(link.split()[0].strip('<>')).path
+                url = urlsplit(link.split()[0].strip('<>'))
+                if url.scheme:
+                    self.assertIn(url.hostname, {'karier.ui.ac.id', 'smutiah48.github.io'})
+                    continue
+                path = url.path
                 if not path:
                     continue
                 target = (doc.parent / unquote(path)).resolve()
