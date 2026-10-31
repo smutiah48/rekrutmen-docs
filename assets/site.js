@@ -50,6 +50,7 @@ function makeToc() {
 }
 async function render(path, hash = '') {
   const request = ++sequence, doc = byPath.get(path); activePath = path;
+  clearDiagrams();
   article.replaceChildren(); toc.replaceChildren(); retry.hidden = true; status.hidden = false;
   nav.querySelectorAll('a').forEach(link => link.toggleAttribute('aria-current', false));
   if (!doc) { status.textContent = 'Dokumen tidak ditemukan.'; return; }
@@ -63,6 +64,8 @@ async function render(path, hash = '') {
     const parsed = marked.parse(markdown, {gfm:true});
     article.innerHTML = DOMPurify.sanitize(parsed, {FORBID_TAGS:['style','form','iframe','svg','math'], FORBID_ATTR:['style']});
     setLinks(path); makeToc(); status.hidden = true;
+    await renderDiagrams(article);
+    if (request !== sequence) return;
     if (hash) { const id = decodeURIComponent(hash.slice(1)); document.getElementById(id)?.scrollIntoView(); }
   } catch { if (request !== sequence) return; status.textContent = 'Dokumentasi tidak dapat dimuat. Periksa koneksi dan coba lagi.'; retry.hidden = false; }
 }
