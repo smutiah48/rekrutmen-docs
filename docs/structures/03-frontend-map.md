@@ -2,7 +2,7 @@
 
 > **Status dokumen:** diturunkan melalui analisis statis dari arsip sumber yang diberikan, 31 Oktober 2026. Dokumentasi ini bukan bukti bahwa seluruh integrasi telah diuji secara live atau bahwa implementasi memenuhi seluruh persyaratan keamanan.
 
-## Shell publik (`Pelamar.html`)
+## Portal publik
 
 - Document head dan dependensi browser (Tailwind CDN, SweetAlert2, PDF.js, Font Awesome).
 - Styling utama, shell, navbar desktop/mobile, hero, kartu jalur, statistik footer.
@@ -10,7 +10,7 @@
 - Pemuatan modul PTT sesuai pemilihan jalur; bridging ke fungsi Apps Script.
 - Fitur form manajerial dan modal, yang backend integrasinya sebagian di luar ZIP.
 
-## PTT (`PTT.html`)
+## Modul PTT
 
 - Scope style komponen untuk kartu, pencarian, detail, form, dan popup.
 - Hero kategori PTT, pilihan jalur, countdown/periode pendaftaran.

@@ -2,21 +2,18 @@
 
 > **Status dokumen:** diturunkan melalui analisis statis dari arsip sumber yang diberikan, 31 Oktober 2026. Dokumentasi ini bukan bukti bahwa seluruh integrasi telah diuji secara live atau bahwa implementasi memenuhi seluruh persyaratan keamanan.
 
-## A. Sumber data yang disinggung dalam backend
+## A. Kelompok informasi
 
 | Sumber | Kegunaan |
 |---|---|
 | Data lamaran & identitas | Data lamaran dan identitas, status serta metadata pendaftaran. |
-| Master formasi kelompok pusat | Formasi untuk kelompok PAU. |
-| Master formasi fakultas | Formasi untuk unit fakultas. |
+| Informasi formasi | Kebutuhan dan persyaratan rekrutmen yang disediakan untuk pelamar. |
 | Referensi pendidikan | Pencocokan dan validasi pendidikan. |
 | Riwayat tahapan seleksi | Status resmi tahapan seleksi. |
 | Antrean email | Jadwal dan status email konfirmasi. |
-| Hasil seleksi administrasi final | Referensi hasil final Seleksi Administrasi pada modul publikasi. |
-| Analisis kandidat internal | Proses analisis di backend admin. |
-| Permintaan perubahan kandidat | Jejak permohonan/pergantian kandidat di backend admin. |
+| Pengumuman | Informasi resmi yang telah disetujui untuk dipublikasikan. |
 
-Daftar ini **tidak mencakup seluruh sheet teknis** yang mungkin dibuat oleh puluhan patch backend admin. Lihat indeks fungsi private untuk penelusuran lebih lanjut.
+Rincian penyimpanan dan proses internal berada di lingkungan privat.
 
 ## B. Form submit pelamar
 
@@ -51,7 +48,7 @@ Alur ini direkonstruksi dari backend pendaftaran dalam arsip. Referensi nama fun
 
 - Penyaringan publikasi dilakukan pada sisi server; kontrol UI saja tidak cukup.
 - Ada tahap Seleksi Administrasi, Tes Inteligensia, dan tahap lanjutan menurut fungsi-fungsi publikasi pada file seleksi.
-- Gate/QA menggunakan Script Properties; nilai test/identitas test tidak boleh dimuat ke repo public.
+- Pengujian menggunakan data sintetis; identitas uji tidak boleh dimuat ke repo public.
 - Ketika membaca hasil publik, pastikan daftar yang menjadi *source of truth* memang telah disahkan.
 
 ## E. Kebijakan perubahan kontrak

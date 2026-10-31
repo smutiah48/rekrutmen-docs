@@ -8,14 +8,14 @@ Ini **rencana staging**, bukan prosedur langsung menjalankan source asli dengan 
 
 ### Fase A — inventarisasi
 
-1. Konfirmasi pemilik proyek, izin penggunaan, project ID deployment, dan batas source masing-masing.
-2. Petakan fungsi global bernama sama sebelum menggabungkan file `.gs` dari project yang berbeda.
+1. Konfirmasi pemilik proyek, izin penggunaan, dan batas tanggung jawab masing-masing layanan.
+2. Pahami pemisahan layanan dan tinjau kompatibilitas sebelum melakukan perubahan.
 3. Salin **data uji sintetis** ke spreadsheet baru dan siapkan folder pengumuman terpisah.
-4. Siapkan inventaris Script Properties dan OAuth scopes; **jangan** menaruh secret sebenarnya dalam dokumentasi.
+4. Terapkan hak akses minimal; **jangan** menaruh secret sebenarnya dalam dokumentasi.
 
 ### Fase B — lingkungan staging
 
-1. Buat project Apps Script untuk portal pelamar dengan `Pelamar.html`, `PTT.html`, backend pelamar, dan modul tracking yang sesuai.
+1. Siapkan lingkungan pengujian terpisah untuk portal dan layanan pelamar.
 2. Pertahankan project backend admin **terpisah** sesuai kondisi sumber, kecuali arsitektur sudah diaudit.
 3. Konfigurasi sheet, folder Drive, identitas service dan izin minimum.
 4. Deploy version khusus staging dan cek logs tanpa data riil.
@@ -34,4 +34,4 @@ Ini **rencana staging**, bukan prosedur langsung menjalankan source asli dengan 
 - Gunakan prosedur perubahan dan rollback yang disetujui.
 - Pantau error, antrean email, quota, serta perubahan struktur sheet.
 
-Catatan: file `appsscript.json` yang disertakan adalah manifest referensi, bukan credential atau bukti deployment mandiri yang siap pakai.
+Catatan: dokumentasi ini tidak membuktikan bahwa aplikasi siap dideploy atau telah diuji pada lingkungan produksi.

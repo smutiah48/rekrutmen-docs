@@ -6,13 +6,15 @@
 
 | Area | Observasi dari arsip | Risiko jika disebarkan tanpa sanitasi |
 |---|---|---|
-| Konfigurasi internal | Ada nilai akses dan identifier hardcoded pada beberapa berkas `.gs`. | Paparan konfigurasi/secret dan kemudahan enumerasi resource. |
+| Konfigurasi internal | Nilai akses dan konfigurasi harus dikelola dalam lingkungan terbatas. | Kebocoran akses atau konfigurasi bila dipublikasikan. |
 | Web app anonim | Akses publik memerlukan pemeriksaan otorisasi dan pembatasan data. | Endpoint publik memiliki hak eksekusi pemilik deploy, bergantung pada validasi server. |
-| API key | Beberapa jalur memakai key berbasis nilai konfigurasi/header/parameter. | Key di klien atau fallback code tidak layak menjadi autentikasi tunggal. |
+| Kredensial | Kunci dan token harus disimpan dan dibatasi sesuai kewenangan. | Kunci pada sisi klien tidak layak menjadi autentikasi tunggal. |
 | Tracking | Penelusuran berdasarkan pasangan email + nomor telepon. | Risiko enumerasi dan kebocoran informasi bila tanpa pembatasan percobaan. |
 | Google Sheets | Menyimpan identitas pelamar dan hasil proses seleksi. | Pelanggaran privasi bila akses, dump, atau audit log terbuka. |
 | Files/PDF | Akses Drive dan PDF pengumuman via token/link. | Kebocoran dokumen internal jika filter publikasi salah. |
-| Admin | Kode backend admin besar dan terus bertambah patch-nya. | Permukaan serangan lebih luas serta risiko otorisasi yang tidak konsisten. |
+| Admin | Akses administratif memerlukan pembatasan sesuai peran. | Operasi atau data dapat terbuka bila otorisasi tidak konsisten. |
+
+Pemeriksaan berdasarkan email dan nomor telepon bersifat lemah jika digunakan sendiri dan tidak setara dengan sesi autentikasi yang kuat, terutama untuk data atau tindakan sensitif.
 
 ## Checklist sebelum menjadikan konten public
 

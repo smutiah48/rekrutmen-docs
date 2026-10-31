@@ -8,7 +8,7 @@
 2. Pendaftaran berisiko ganda akibat refresh, jaringan terlambat, atau klik berulang; backend menyediakan **request ID**, pencarian submit yang telah tersimpan, dan lock saat menulis.
 3. Tahapan seleksi tersebar di sejumlah sheet; **tracking identity + stage-aware response** mengurangi pencarian manual.
 4. Pengumuman tidak boleh tampil sebelum disetujui; gate publikasi dan mode QA membedakan pengujian dan publikasi resmi.
-5. Operasional administrasi butuh layanan terpisah untuk ringkasan, review, keputusan, ranking, dan follow up.
+5. Operasional administrasi membutuhkan layanan terpisah dengan akses yang dibatasi sesuai tanggung jawab.
 
 ## Aktor
 
@@ -17,16 +17,14 @@
 - **Pengelola sistem:** mengatur konfigurasi, sheet, script properties, deployment, QA, dan publikasi.
 - **Sistem eksternal:** backend rekrutmen lain melalui gateway yang disediakan pada file pelamar.
 
-## Modul terkonfirmasi di arsip
+## Gambaran komponen
 
-| Modul | Berkas utama | Keberhasilan yang diharapkan |
-|---|---|---|
-| Shell publik | `frontend/Pelamar.html` | Pengguna menavigasi portal, pengumuman, panduan, FAQ, tracking. |
-| Rekrutmen PTT | `frontend/PTT.html` | Pengguna menemukan jalur, formasi, dan form pendaftaran. |
-| API pelamar | `backend/PelamarBackend.gs` | Query formasi, submit, check submission, tracking dan PDF. |
-| Seleksi & publikasi | `backend/SeleksiAdministrasi.gs` | Menampilkan status publik sesuai gate yang berlaku. |
-| Backend admin | `backend/AdminBackend.gs` | Data, rekap, keputusan, analisis, dan pemrosesan internal. |
-| Manifest | `config/appsscript.json` | Runtime V8, scope OAuth, timezone, konteks web app. |
+| Komponen | Peran tingkat umum |
+|---|---|
+| Portal pelamar | Menyajikan informasi, panduan, pengumuman, dan pelacakan. |
+| Modul rekrutmen | Membantu pengguna menemukan formasi dan mengisi pendaftaran. |
+| Layanan pelamar | Mendukung pendaftaran, informasi, dan status yang diizinkan. |
+| Layanan administrasi | Mendukung proses operasional dalam lingkungan terbatas. |
 
 ## Di luar lingkup yang dapat diverifikasi
 
