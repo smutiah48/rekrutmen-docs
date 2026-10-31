@@ -7,6 +7,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PublicDocumentationReview(unittest.TestCase):
+    def test_demo_catalog_matches_ordered_images(self):
+        source = (ROOT / 'assets/demo.js').read_text(encoding='utf-8')
+        entries = re.findall(r"\['(\d{2}-[^']+\.(?:png|jpg))', '([^']+)', '([^']+)'\]", source)
+        images = sorted(p.name for p in (ROOT / 'assets/images').iterdir() if p.is_file())
+        self.assertTrue(entries, 'demo catalog must not be empty')
+        self.assertEqual([file for file, _, _ in entries], images)
+        self.assertEqual([int(file[:2]) for file, _, _ in entries], list(range(1, len(images) + 1)))
+        self.assertTrue(all(title.strip() and description.strip() for _, title, description in entries))
+
     def test_public_files_and_navigation(self):
         files = [p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts]
         self.assertEqual([p.relative_to(ROOT).as_posix() for p in files if p.suffix == '.html'], ['index.html'])

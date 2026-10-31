@@ -1,5 +1,6 @@
 'use strict';
 const groups = {
+  'Demo': [['demo','Demo alur rekrutmen']],
   'Pengantar': [['README.md','Ringkasan proyek'],['DESIGN.md','Sistem desain'],['PUBLIC-NOTICE.md','Pemberitahuan publik'],['docs/README.md','Pusat dokumentasi']],
   'Spesifikasi': [['docs/specs/01-system-overview.md','Gambaran sistem'],['docs/specs/02-functional-requirements.md','Kebutuhan fungsional'],['docs/specs/03-data-and-workflows.md','Data dan alur kerja'],['docs/specs/04-security-and-privacy.md','Keamanan dan privasi'],['docs/specs/05-ui-content-contracts.md','Kontrak UX dan konten']],
   'Rencana': [['docs/plans/01-deployment.md','Deployment'],['docs/plans/02-testing-qa.md','Pengujian dan QA'],['docs/plans/03-github-portfolio.md','Repositori GitHub'],['docs/plans/04-maintenance-roadmap.md','Pemeliharaan']],
@@ -45,7 +46,7 @@ function makeToc() {
   article.querySelectorAll('h1,h2,h3,h4').forEach(heading => {
     const base = heading.textContent.toLowerCase().trim().replace(/[^\p{L}\p{N}\s-]/gu, '').replace(/\s+/g, '-') || 'bagian';
     const count = used.get(base) || 0; used.set(base, count + 1); heading.id = count ? `${base}-${count}` : base;
-    if (heading.tagName === 'H2' || heading.tagName === 'H3') { const link = document.createElement('a'); link.href = `#${heading.id}`; link.textContent = heading.textContent; toc.append(link); }
+    if ((heading.tagName === 'H2' || heading.tagName === 'H3') && !heading.closest('.demo-card')) { const link = document.createElement('a'); link.href = `#${heading.id}`; link.textContent = heading.textContent; toc.append(link); }
   });
 }
 async function render(path, hash = '') {
@@ -58,6 +59,11 @@ async function render(path, hash = '') {
   nav.querySelectorAll('a').forEach(link => { if (link.dataset.doc === path) link.setAttribute('aria-current', 'page'); });
   status.textContent = 'Memuat dokumentasi…';
   try {
+    if (path === 'demo') {
+      renderDemo(article); makeToc(); status.hidden = true;
+      if (hash) document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView();
+      return;
+    }
     if (!window.marked || !window.DOMPurify) throw new Error('renderer');
     const response = await fetch(new URL(doc.path, document.baseURI)); if (!response.ok) throw new Error('fetch');
     const markdown = await response.text(); if (request !== sequence) return;
